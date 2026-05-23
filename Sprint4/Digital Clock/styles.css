@@ -1,0 +1,57 @@
+*{
+  /* Set margin and padding to zero*/
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
+html,body{
+  display: grid;
+  height: 100%;
+  place-items: center;
+  /* Set the background to black */
+  /* background-color: black; */
+}
+.wrapper{
+  /* Set height to 100px and width to 360 px*/
+  height: 100px;
+  width: 360px;
+  position: relative;
+  background: linear-gradient(135deg, #14ffe9, #ffeb3b, #ff00e0);
+  border-radius: 10px;
+  cursor: default;
+  animation: animate 1.5s linear infinite;
+}
+.wrapper .display,
+.wrapper span{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.wrapper .display{
+  /* Set the z-index to 999 */
+  z-index: 999;
+  height: 85px;
+  width: 345px;
+  background: #1b1b1b;
+  border-radius: 6px;
+  /* set the text alight to center*/
+  text-align: center;
+}
+.display #time{
+  line-height: 85px;
+  color: #fff;
+  /*Set the font size to 50px, font weight to 600 and letter spacing to 1px. */
+  font-size: 50px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  background: linear-gradient(135deg, #14ffe9, #ffeb3b, #ff00e0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: animate 1.5s linear infinite;
+}
+@keyframes animate {
+  100%{
+    filter: hue-rotate(360deg);
+  }
+}

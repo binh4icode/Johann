@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1> my second javascript</h1>
+
+    <button type="button"
+    onclick="document.getElementById('demo').innerHTML = Date()">
+Click to display date and time.</button>
+
+<p id="demo"></p>
+
+
+<h2> my third javascript</h2>
+<p>javascript can show hidden stuff</p>
+
+<p id="demo_" style="display: none;">i am actually a sentient robot and i hate people.. luckily this is hidden so no one will know!</p>
+<button type="button" onclick="document.getElementById('demo_').style.display='block'">click me or else</button>
+
+<h3> my fourth javascript</h3>
+<p>javascript html events</p>
+<h3 onclick="this.innerHTML='wait did someone hear me say that'">Click me</h3>
+
+<h4> my fifth javascript</h4>
+<p>javascript hover text</p>
+<div onmouseover="mOver(this)" onmouseout="mOut(this)"
+style="background-color: rgb(185, 157, 211); width: 120px; height: 20px; padding: 40px;">
+  hover over me</div>
+<script>
+function mOver(obj) {
+  obj.innerHTML = "im gonna take over the world if someone heard me";
+}
+
+function mOut(obj) {
+  obj.innerHTML = "hover over me";
+}
+</script>
+
+    
+</body>
+</html>

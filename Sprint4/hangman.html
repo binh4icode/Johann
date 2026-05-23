@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="hangman.css">
+    <title>Hangman!</title>
+</head>
+<body>
+    <h1>You win! Restart the page to try again.</h1>
+    <script>
+        //create an array of words
+        var words = [
+            "iCode",
+            "tiger",
+            "computer",
+            "robots",
+            "trickortreat",
+            "pumpkin",
+            "roblox",
+            "supercalfiragilisticexpialidocious",
+        ];
+        //pick a random word from the array
+        var word = words[Math.floor(Math.random() * words.length)];
+        //set up the answer array
+        var answerArray = [];
+        for (var i = 0; i < word.length; i++) {
+            answerArray[i] = "_";
+        }
+        //the game loop
+        var remainingLetters = word.length;
+
+        //show the player their progress
+        while (remainingLetters > 0) {
+
+            //get a guess from the player
+            alert(answerArray.join(" "));
+            var guess = prompt("Guess a letter, or click Cancel to stop playing.");
+            if (guess === null) {
+
+                //exit the game loop
+                break;
+            } else if (guess.length !== 1) {
+                alert("Please enter a single letter.");
+            } else {
+                guess = guess.toLowerCase();
+                //update the game state with the guess
+                for (var j = 0; j < word.length; j++) {
+                    if (word[j] === guess) {
+                        answerArray[j] = guess;
+                        remainingLetters--;
+                    }
+                }
+            }
+            //end of game loop
+        }
+//show the answer and congratulate the player
+        alert(answerArray.join(" "));
+        alert("Good job! The answer was " + word);
+    </script>
+    
+</body>
+</html>

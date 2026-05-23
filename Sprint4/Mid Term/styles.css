@@ -1,0 +1,161 @@
+body{
+    background-color: #121212;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.player {
+    /* configurable border thickness and radius */
+    --border-size: 10px;
+    --radius: 30px;
+
+    position: relative;
+    z-index: 0;
+
+    width: 50%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    justify-content: center;
+    align-items: center;
+    border-radius: var(--radius);
+
+    /* interior background */
+    background-color: #7e7e7e;
+
+    /* keep overflow visible so the outer glow shows */
+    overflow: visible;
+}
+
+/* static multi-colored illuminated border */
+.player::before {
+    content: "";
+    position: absolute;
+    /* place the gradient outside and around the element */
+    inset: calc(var(--border-size) * -1);
+    border-radius: calc(var(--radius) + var(--border-size));
+
+    /* rainbow ring */
+    background: conic-gradient(
+        red, orange, yellow, lime, cyan, blue, magenta, red
+    );
+
+    /* soft glow to simulate illumination */
+    filter: blur(6px) saturate(1.2);
+    opacity: 0.95;
+
+    /* layer behind the content but above page background */
+    z-index: -2;
+    pointer-events: none;
+}
+
+/* inner mask so the gradient only shows as a border ring */
+.player::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius);
+    background: inherit; /* matches .player background-color */
+    z-index: -1;
+}
+
+
+
+.details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: animate 5s linear infinite;
+}
+
+.buttons {
+    flex-direction: row;
+    width: 100%;
+}
+
+.slider_container {
+    flex-direction: row;
+    width: 100%;
+}
+
+/*.text {
+    text-align: center;
+    color: linear-gradient(to right, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8b00ff);
+    animation: animate 5s linear infinite;
+}*/
+
+/* replace the old .text rule with this */
+.text, .track-name, .track-desc, .now-playing {
+    /* rainbow gradient */
+    background: linear-gradient(90deg,
+      #ff0000, #ff7f00, #ffff00, #00ff00, #00bfff, #4b0082, #8b00ff);
+    background-size: 200% 200%;
+
+    /* clip gradient to text */
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    /* animate the gradient */
+    animation: rainbow-text 10s linear infinite;
+    /* keep other text layout rules */
+    text-align: center;
+}
+
+/* animate gradient sliding across the text */
+@keyframes rainbow-text {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+/* ...existing code... */
+
+.track-art {
+    width: 60%;
+    height: auto;
+    border-radius: 30px;
+}
+
+.playpause-track {
+    width: 60px;
+    height: 60px;
+}
+
+.flex {
+   display: flex;
+   justify-content: center; 
+   align-items: center;
+}
+
+p {
+    text-align: center;
+    padding: 20px;
+}
+
+.btn {
+    margin: 40px;
+    width: 40px;
+}
+
+.track-name {
+    font-size: 30px;
+}
+
+.track-desc, .now-playing {
+    font-size: 20px;
+}
+
+.prev-track, .next-track, .download {
+    width: 30px;
+    height: 30px;
+}
+
+.seek_slider {
+    width: 80%;
+}
+
+@keyframes animate {
+  100%{
+    filter: hue-rotate(360deg);
+  }
+}
